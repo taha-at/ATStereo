@@ -414,7 +414,6 @@ class ATStereoWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.updatePlanResult(side)
     self.updatePlanTube(side)
     self.applyPlanTransform(side)
-    self.checkTrajectorySeparation()
 
   def updatePlanResult(self, side):
     plan = self.trajectory_targets[side]
@@ -651,11 +650,6 @@ class ATStereoWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     if d_entry < minDistanceMm or d_target < minDistanceMm:
         slicer.util.warningDisplay("Warning: left and right trajectories are very close.")
 
-        
-
-
-
-
   def updatePlanTube(self, side):
     plan = self.trajectory_targets[side]
 
@@ -773,6 +767,8 @@ class ATStereoWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
     self.applyPlanTransform("left")
     self.applyPlanTransform("right")
+
+    self.checkTrajectorySeparation()
 
   def loadPlanModels(self, side, supportFile, sliderFile, arcFile, boxFile, pathFile, axialFile):
       plan = self.trajectory_targets[side]

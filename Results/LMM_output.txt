@@ -1,0 +1,27 @@
+N = 156
+operator
+Op1    69
+Op2    25
+Op3    22
+Op4    20
+Op5    20
+Name: count, dtype: int64
+
+converged: True
+mean 0.3847 mm, SE 0.0588, 95% CI [0.2215, 0.5479] (t, df=4)
+between-operator SD 0.13, residual SD 0.12
+between-operator var 0.016723, residual var 0.013681, ICC 0.550
+stats.t.ppf(0.975, 4): 2.7764451051977987
+
+            N   mean     SD  median    Q25    Q75   min   max
+operator                                                    
+Op1       69  0.405  0.082    0.40  0.340  0.460  0.24  0.58
+Op2       25  0.603  0.201    0.63  0.400  0.730  0.26  0.94
+Op3       22  0.335  0.123    0.33  0.268  0.420  0.12  0.63
+Op4       20  0.310  0.097    0.29  0.245  0.350  0.18  0.58
+Op5       20  0.269  0.086    0.25  0.210  0.305  0.16  0.54
+
+pooled mean 0.3971 +/- 0.1543
+pooled median 0.3700
+pooled range 0.12 -- 0.94
+mean of operator means 0.3843 +/- 0.1317 [0.2207, 0.5478]
