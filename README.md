@@ -1,6 +1,6 @@
 # Manual Basic Operation Guide for ATStereo
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22543053.svg)](https://doi.org/10.5281/zenodo.22543053)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23449030.svg)](https://doi.org/10.5281/zenodo.23449030)
 [![Website](https://img.shields.io/badge/Website-ATStereo-blue)](https://abdelrahmantaha.me/ATStereo-site/)
 
 ## 1. Program Download and Installation
@@ -75,4 +75,4 @@
 
 ## Citation & DOI
 
-- **DOI:** [10.5281/zenodo.22543053](https://doi.org/10.5281/zenodo.22543053)
+- **DOI:** [10.5281/zenodo.23449030](https://doi.org/10.5281/zenodo.23449030)
