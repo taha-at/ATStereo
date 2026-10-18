@@ -1,32 +1,34 @@
-# ATStereo registration RMSE analysis
+# ATStereo — Results & Analysis
 
-`LMM.py` reproduces the analysis of frame-registration RMSE (156 trials, 5 operators)
-reported in Results Section 3.1 and Table 1.
+This directory contains the experimental datasets, analysis scripts, and notebooks for ATStereo.
 
-## What it does
-- Reads one CSV per operator (column `RMSE`, in mm).
-- Fits a linear mixed-effects model with a random intercept for operator (REML):
-  RMSE_ij = beta_0 + u_j + e_ij.
-- Reports the model-based mean with a t-based 95% CI (df = number of operators - 1),
-  the between-operator and residual variances, and the ICC.
-- Prints per-operator descriptive statistics (compare with Table 1), the pooled
-  trial-level mean, and the mean of operator means with its CI.
+## Files
 
-## Run
-Place the five CSVs (`ATStereo_Phase1_RMSE_op1.csv` ... `op5.csv`) in the same
-folder as the script, then:
+- **`results.ipynb`**: Main Jupyter notebook for statistical analysis (summary statistics, Kruskal–Wallis, Dunn's post-hoc tests, novice learning curve fitting, BrainStereo comparison) and generating publication figures (Figures 5–8 at 300 DPI).
+- **`LMM.py` & `LMM_output.txt`**: Linear mixed-effects model (random intercept for operator, REML) reporting the primary registration RMSE estimand ($0.38\text{ mm}$, 95% CI: $0.22$–$0.55\text{ mm}$, $df=4$, $\text{ICC}=0.550$) and per-operator metrics for Table 1.
+- **`collision_analysis.ipynb`**: Evaluates bilateral trajectory separation distances against the 5.0 mm collision-warning threshold.
+- **`ATStereo_Phase1_RMSE_op[1-5].csv`**: Registration RMSE data (156 trials across 5 operators).
+- **`ATStereo_WorkflowTime_op[1-5].csv`**: Surgical workflow durations (108 trials across 5 operators).
+- **`trajectory_and_safety_errors.xlsx`**: Clinical DBS trajectory deviation ($\delta_{\text{trajectory}}$) across 17 evaluated leads and anatomical safety clearance.
+- **`trajectorySeparation.csv`**: Bilateral entry and target coordinates across 9 clinical cases.
 
-```
+## Usage
+
+### 1. Frame Registration LMM
+```bash
 python3 LMM.py > LMM_output.txt
 ```
 
-Operators are identified only as Op1-Op5.
+### 2. Main Analysis & 300 DPI Figures
+```bash
+python3 -m nbconvert --execute --inplace results.ipynb
+```
+Generates `Figure_5_RMSE_Distribution.png`, `Figure_6_Learning_Curve.png`, `Figure_7_Boxplots.png`, and `Figure_8_BrainStereo_Comparison.png`.
+
+### 3. Bilateral Collision Analysis
+```bash
+python3 -m nbconvert --execute --inplace collision_analysis.ipynb
+```
 
 ## Environment
-Python 3.12.0, scipy 1.16.2, statsmodels 0.14.6, scikit-posthocs 0.16.1
-
-## Notes
-- With five operators the CI uses 4 degrees of freedom, an approximation to
-  Satterthwaite/Kenward-Roger for unbalanced data.
-- Operators are confounded with experience level, so between-operator variance
-  is not purely random.
+Python 3.12 (`numpy`, `pandas`, `scipy`, `statsmodels`, `scikit-posthocs`, `matplotlib`, `openpyxl`, `nbconvert`)
